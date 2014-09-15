@@ -4,13 +4,25 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../src/scheme.cpp 
+../src/Main.cpp \
+../src/Parser.cpp \
+../src/Scanner.cpp \
+../src/Special.cpp \
+../src/Tree.cpp 
 
 OBJS += \
-./src/scheme.o 
+./src/Main.o \
+./src/Parser.o \
+./src/Scanner.o \
+./src/Special.o \
+./src/Tree.o 
 
 CPP_DEPS += \
-./src/scheme.d 
+./src/Main.d \
+./src/Parser.d \
+./src/Scanner.d \
+./src/Special.d \
+./src/Tree.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
