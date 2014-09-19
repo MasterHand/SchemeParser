@@ -28,6 +28,8 @@ static char * TokenName[] = {
 
 
 int main (int argc, char ** argv) {
+
+	cout << "initial test. code base compiles" << endl;
   // create scanner that reads from standard input
   Scanner * scanner = new Scanner(&cin);
 
