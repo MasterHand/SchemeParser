@@ -51,9 +51,13 @@ class IntToken : public Token {
   int intVal;
 
  public:
-  IntToken(int i) : Token(INT)		{ intVal = i; }
+  IntToken(int i) : Token(INT)		{
+	  intVal = i;
+  }
 
-  virtual int    getIntVal()		{ return intVal; }
+  virtual int    getIntVal()		{
+	  return intVal;
+  }
 };
 
 

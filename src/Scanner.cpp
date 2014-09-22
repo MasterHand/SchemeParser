@@ -3,12 +3,16 @@
 #include <iostream>
 #include <string.h>
 #include <ctype.h>
+#include <stdio.h>
+#include <stdlib.h>
+
 
 #include "Scanner.h"
 
 Token * 
 Scanner::getNextToken() {
   char ch;  
+
 
   // It would be more efficient if we'd maintain our own input buffer
   // and read characters out of that buffer, but reading individual
@@ -20,8 +24,8 @@ Scanner::getNextToken() {
   if (in->eof())
     return NULL;
 
-  else if (ch == ';')
-	  return new Token(IDENT);
+  else if (ch == ' ' || ch == '\n')
+	  return getNextToken();
 
   // Special characters
   else if (ch == '\'')
@@ -50,24 +54,54 @@ Scanner::getNextToken() {
   // String constants
   else if (ch == '"') {
     // TODO: scan a string into the buffer variable buf
-	  in->get(ch);     //re- declare the stream for each type of token
-	  char buf[255];
+	  in->get(ch);     //re- declare the stream object as a look-ahead to next character
 
-	 while (ch != '\0'){    //buff array  allocated with each character
-		 buf[ch];
-	 }
 
-	 strdup(buf);  // allocates memory for buf char array
+
+	  cout << "testing666" << endl;
+
+	 int count = 0;
+
+	  while (ch != '"'){
+		  buf[count] = ch;
+		  ++count;
+		  in->get(ch);
+
+	  }
+
+
+
+/* we need to loop through each character and store in buf array
+
+	  cout << ch << endl;
+	  in->get(ch);
+	  cout << ch << endl;
+	  in->get(ch);
+	  cout << ch << endl;
+	  in->get(ch);
+	  cout << ch << endl;
+	  in->get(ch);
+	  cout << ch << endl;
+	  in->get(ch);
+	  cout << ch << endl;
+
+*/
+
+		cout << "testing123" << endl;
+
 
 
     return new StrToken(buf);
+
   }
 
   // Integer constants
   else if (ch >= '0' && ch <= '9') {
     // TODO: scan the number and convert it to an integer
 
+
 	 int i = 10*i + ch - '0';
+
 
 
     // put the character after the integer back into the input
@@ -78,24 +112,24 @@ Scanner::getNextToken() {
   }
 
   // Identifiers
-  else if (ch >= 'A' && ch <= 'Z'  /* ascii 90-65 */
-	   /* or ch is some other valid first character for an identifier */) {
+  else if ((ch >= 'A' && ch <= 'Z')||  /* ascii 65-90 */
+		  (ch >= '#' && ch <= '/') ||  /* ascii 33-47 */
+		  (ch >= ':' && ch <= '@') ||   /* ascii 58-64 */
+		  (ch >= '^' && ch <= '_') || /* ascii 94-95 */
+		  (ch = '~') /* ascii 126 */
+		  )
+	   /* or ch is some other valid first character for an identifier */ {
 
 	  // TODO: scan an identifier into the buffer
 	  in->get(ch);
-	  return new IdentToken();
 
 
-	  64 - 58
-	  33-47
-	  91 - 96
-	  126 is ~
 
     // put the character after the identifier back into the input
     in->putback(ch);
 
-   return new IdentToken(ch);
-    //return new IdentToken(buf);
+
+    return new IdentToken(buf);
   }
 
   // Illegal character

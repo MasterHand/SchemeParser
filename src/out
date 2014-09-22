@@ -1,0 +1,10 @@
+initial test. code base compiles
+LPAREN
+TRUET
+TRUET
+testing666
+testing123
+STRING, strVal = Scan this damn string
+RPAREN
+IDENT, name = Scan this damn string
+IDENT, name = Scan this damn string
