@@ -2,9 +2,17 @@ initial test. code base compiles
 LPAREN
 TRUET
 TRUET
-testing666
-testing123
 STRING, strVal = Scan this damn string
 RPAREN
-IDENT, name = Scan this damn string
-IDENT, name = Scan this damn string
+STRING, strVal = new string
+STRING, strVal = 225
+INT, intVal = 2
+INT, intVal = 5
+INT, intVal = -38
+IDENT, name = 225
+IDENT, name = 225
+IDENT, name = 225
+IDENT, name = 225
+IDENT, name = 225
+IDENT, name = 225
+INT, intVal = -38
