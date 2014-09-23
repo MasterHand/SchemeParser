@@ -5,6 +5,8 @@
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <stack>
+#include <math.h>
 
 #include "Scanner.h"
 
@@ -99,37 +101,49 @@ Scanner::getNextToken() {
 		 */
 
 		return new StrToken(buf);
-//		return getNextToken();
-
 	}
 
 	// Integer constants
 	else if (ch >= '0' && ch <= '9') {
 		// TODO: scan the number and convert it to an integer
-		in->get(ch);
+		//in->get(ch);
 
-		//cout << ch << endl;
+		std::stack<int> theStack;  //LIFO STACK
 
-		int i = ch - '0';
+		while (ch >= '0' && ch <= '9'){
+			theStack.push((ch - '0'));
+			in->get(ch);
+		}
+		int intVals = 0;
+		int i = 0;
 
+		while (!theStack.empty()){
+			//cout << ' ' << theStack.top(); this will print the stack from top down
+			//we need to take each number in the stack  5 5 2 and make it 225, use some math
+			intVals = intVals + theStack.top() * pow(10.0, i++);
+			/*example 225 ...
+			0  + 5* (10^0) = 5
+			5  + 2* (10^1) = 25
+			25 + 2* (10^2) = 225 !!!
+
+			*/
+			theStack.pop();
+
+		}
+		//int i = 10*i + ch - '0';
 		// x = atoi(buf);
 
 		// put the character after the integer back into the input
 		in->putback(ch);
 
-		return new IntToken(i);
+		return new IntToken(intVals);
 		//  return getNextToken();
 
 	}
 
 	// Identifiers
-	else if ((ch >= 'A' && ch <= 'Z') || /* ascii 65-90 */
-	(ch >= '#' && ch <= '/') || /* ascii 33-47 */
-	(ch >= ':' && ch <= '@') || /* ascii 58-64 */
-	(ch >= '^' && ch <= '_') || /* ascii 94-95 */
-	(ch = '~') /* ascii 126 */
-	)
-	/* or ch is some other valid first character for an identifier */{
+	else if (ch >= 'A' && ch <= 'Z') {
+	/* or ch is some other valid first character for an identifier */
 
 		// TODO: scan an identifier into the buffer
 		in->get(ch);
@@ -139,6 +153,15 @@ Scanner::getNextToken() {
 
 		return new IdentToken(buf);
 	}
+
+	else if (ch == '!' || ch == '$' || ch == '%' || ch == '&' || ch == '*' || ch == '+'
+			|| ch == '-' || ch == '.' || ch == '/' || ch == ':' || ch == '<' || ch == '>'
+			|| ch == '=' || ch == '?' || ch == '@' || ch == '^' || ch == '_' || ch == '~'){
+
+		//dosomething
+		return IdentToken(buf);
+	}
+
 
 	// Illegal character
 	else {
