@@ -1,4 +1,7 @@
 initial test. code base compiles
+IDENT, name = ?
+IDENT, name = $???
+IDENT, name = ?
 LPAREN
 IDENT, name = DEFINE
 IDENT, name = x
@@ -10,15 +13,18 @@ IDENT, name = n
 LPAREN
 IDENT, name = if
 LPAREN
+IDENT, name = =
 IDENT, name = n
 INT, intVal = 0
 RPAREN
 INT, intVal = 1
 LPAREN
+IDENT, name = *
 IDENT, name = n
 LPAREN
 IDENT, name = fac
 LPAREN
+IDENT, name = -
 IDENT, name = n
 INT, intVal = 1
 RPAREN
@@ -40,3 +46,5 @@ INT, intVal = 2346
 IDENT, name = two
 IDENT, name = two
 INT, intVal = 5
+INT, intVal = 1
+IDENT, name = se7en

@@ -83,22 +83,6 @@ Scanner::getNextToken() {
 		}
 		buf[size] = '\0';
 
-		/* we need to loop through each character and store in buf array
-
-		 cout << ch << endl;
-		 in->get(ch);
-		 cout << ch << endl;
-		 in->get(ch);
-		 cout << ch << endl;
-		 in->get(ch);
-		 cout << ch << endl;
-		 in->get(ch);
-		 cout << ch << endl;
-		 in->get(ch);
-		 cout << ch << endl;
-
-		 */
-
 		return new StrToken(buf);
 	}
 
@@ -116,21 +100,19 @@ Scanner::getNextToken() {
 		int intVals = 0;
 		int i = 0;
 
-		while (!theStack.empty()){
-			//cout << ' ' << theStack.top(); this will print the stack from top down
-			//we need to take each number in the stack  5 2 2 and make it 225, use some math
-			intVals = intVals + theStack.top() * pow(10.0, i++);
-			/*example 225 ...
-			0  + 5* (10^0) = 5
-			5  + 2* (10^1) = 25
-			25 + 2* (10^2) = 225 !!!
 
-			*/
+
+		while (!theStack.empty()){
+			intVals = intVals + theStack.top() * pow(10.0, i++);
 			theStack.pop();
 
 		}
-		//int i = 10*i + ch - '0';
-		// x = atoi(buf);
+		//cout << ' ' << theStack.top(); this will print the stack from top down
+				//we need to take each number in the stack  5 2 2 and make it 225, use some math
+				/*example 225 ...
+						0  + 5* (10^0) = 5
+						5  + 2* (10^1) = 25
+						25 + 2* (10^2) = 225 !!!*/
 
 		// put the character after the integer back into the input
 		in->putback(ch);
@@ -160,16 +142,23 @@ Scanner::getNextToken() {
 
 		return new IdentToken(buf);
 	}
-/*
+
 	else if (ch == '!' || ch == '$' || ch == '%' || ch == '&' || ch == '*' || ch == '+'
 			|| ch == '-' || ch == '.' || ch == '/' || ch == ':' || ch == '<' || ch == '>'
 			|| ch == '=' || ch == '?' || ch == '@' || ch == '^' || ch == '_' || ch == '~'){
 
-		//dosomething, remeber !=, ==, >=, <=, <<, >>, ++, --
+		//remember !=, ==, >=, <=, <<, >>, ++, --
+		clearBuf();
+		while (!(ch == ' ' || ch == ')' || ch == '\n')){
+			buf[size] = ch;
+			++size;
+			in->get(ch);
+		}
+
 
 		return new IdentToken(buf);
 	}
-*/
+
 
 	// Illegal character
 	else {
