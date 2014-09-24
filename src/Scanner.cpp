@@ -35,7 +35,7 @@ Scanner::getNextToken() {
 		return NULL;
 	// skips whitesapce, newline, tab, vertical tab, horizontal tab, carriage return, form feed
 	if (ch == ' ' || ch == '\n' || ch == '\t' ||
-		ch == '\v' || ch == '\r'|| ch == '\f')
+		ch == '\v' || ch == '\r' || ch == '\f')
 		return getNextToken();
 
 	if (ch == ';') {
@@ -74,7 +74,6 @@ Scanner::getNextToken() {
 
 		clearBuf();
 
-		//int count = 0;
 
 		while (ch != '"') {
 			buf[size] = ch;
@@ -119,7 +118,7 @@ Scanner::getNextToken() {
 
 		while (!theStack.empty()){
 			//cout << ' ' << theStack.top(); this will print the stack from top down
-			//we need to take each number in the stack  5 5 2 and make it 225, use some math
+			//we need to take each number in the stack  5 2 2 and make it 225, use some math
 			intVals = intVals + theStack.top() * pow(10.0, i++);
 			/*example 225 ...
 			0  + 5* (10^0) = 5
@@ -137,31 +136,40 @@ Scanner::getNextToken() {
 		in->putback(ch);
 
 		return new IntToken(intVals);
-		//  return getNextToken();
 
 	}
 
 	// Identifiers
-	else if (ch >= 'A' && ch <= 'Z') {
-	/* or ch is some other valid first character for an identifier */
+	else if ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z')) {
+	//or ch is some other valid first character for an identifier
 
 		// TODO: scan an identifier into the buffer
-		in->get(ch);
+		//in->get(ch);
+
+		clearBuf();
+
+		while (!(ch == ' ' || ch == ')' || ch == '\n' )){  //an identifier might end with a space or closing paren
+			//put on stack or buf variable
+			buf[size] = ch;
+			++size;
+			in->get(ch); //return ch to int input stream and analyze next char
+		}
 
 		// put the character after the identifier back into the input
-		in->putback(ch);
+		//in->putback(ch);
 
 		return new IdentToken(buf);
 	}
-
+/*
 	else if (ch == '!' || ch == '$' || ch == '%' || ch == '&' || ch == '*' || ch == '+'
 			|| ch == '-' || ch == '.' || ch == '/' || ch == ':' || ch == '<' || ch == '>'
 			|| ch == '=' || ch == '?' || ch == '@' || ch == '^' || ch == '_' || ch == '~'){
 
-		//dosomething
-		return IdentToken(buf);
-	}
+		//dosomething, remeber !=, ==, >=, <=, <<, >>, ++, --
 
+		return new IdentToken(buf);
+	}
+*/
 
 	// Illegal character
 	else {

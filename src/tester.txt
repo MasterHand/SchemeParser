@@ -1,3 +1,7 @@
+(DEFINE x ’(define (fac n)
+	(if (= n 0) 1
+		(* n (fac (- n 1))))))
+
 (#t#t "Scan this damn string" ); ~
 "new string"
 "225"
@@ -5,3 +9,4 @@
 1
 2346
 two two 5
+

@@ -1,5 +1,33 @@
 initial test. code base compiles
 LPAREN
+IDENT, name = DEFINE
+IDENT, name = x
+LPAREN
+IDENT, name = define
+LPAREN
+IDENT, name = fac
+IDENT, name = n
+LPAREN
+IDENT, name = if
+LPAREN
+IDENT, name = n
+INT, intVal = 0
+RPAREN
+INT, intVal = 1
+LPAREN
+IDENT, name = n
+LPAREN
+IDENT, name = fac
+LPAREN
+IDENT, name = n
+INT, intVal = 1
+RPAREN
+RPAREN
+RPAREN
+RPAREN
+RPAREN
+RPAREN
+LPAREN
 TRUET
 TRUET
 STRING, strVal = Scan this damn string
@@ -9,10 +37,6 @@ STRING, strVal = 225
 INT, intVal = 225
 INT, intVal = 1
 INT, intVal = 2346
-IDENT, name = 225
-IDENT, name = 225
-IDENT, name = 225
-IDENT, name = 225
-IDENT, name = 225
-IDENT, name = 225
+IDENT, name = two
+IDENT, name = two
 INT, intVal = 5
