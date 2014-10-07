@@ -37,7 +37,7 @@ int main (int argc, char ** argv) {
     cerr << "Usage: " << argv[0] << "[-d]" << endl;
     return 1;
   }
-/*
+
   // if commandline option -d is provided, debug the scanner
   if (argc == 2 && argv[1][0] == '-' && argv[1][1] == 'd') {
     // debug scanner
@@ -56,7 +56,7 @@ int main (int argc, char ** argv) {
       tok = scanner->getNextToken();
     }
   }
-*/
+
   // Create parser
   Parser * parser = new Parser(scanner);
   Node * root;

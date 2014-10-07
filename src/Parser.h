@@ -43,11 +43,12 @@
 class Parser {
  private:
   Scanner * scanner;
-  Token * token;
+
 
  public:
   Parser(Scanner * s)	{
 	  scanner = s;
+
   }
   Node * parseExp();
 
