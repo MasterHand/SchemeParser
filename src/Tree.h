@@ -73,6 +73,9 @@ class Node {
   virtual Node * getCdr() { return NULL; }
   virtual void setCar(Node * a) { }
   virtual void setCdr(Node * d) { }
+
+  virtual string getStrVal(){ return NULL;}
+  virtual string getName(){ return NULL; }
 };
 
 
@@ -81,9 +84,14 @@ class BoolLit : public Node {
   bool boolVal;
 
  public:
-  BoolLit(bool b) { boolVal = b;  }
+  BoolLit(bool b) {
+	  boolVal = b;
+  }
 
   virtual void print(int n);
+  virtual bool isBool()   { return TRUE; }  // BoolLit
+
+
 };
 
 
@@ -92,9 +100,13 @@ class IntLit : public Node {
   int intVal;
 
  public:
-  IntLit(int i) { intVal = i; }
+  IntLit(int i) {
+	  intVal = i;
+  }
 
   virtual void print(int n);
+  virtual bool isNumber() { return TRUE; }  // IntLit
+
 };
 
 
@@ -103,9 +115,18 @@ class StrLit : public Node {
   char * strVal;
 
  public:
-  StrLit(char * s) { strVal = s; }
+  StrLit(char * s) {
+	  strVal = s;
+  }
+
+  virtual string getStrlVal(){
+	  return strVal;
+  }
+
 
   virtual void print(int n);
+  virtual bool isString() { return TRUE; }  // StringLit
+
 };
 
 
@@ -114,9 +135,17 @@ class Ident : public Node {
   char * name;
 
  public:
-  Ident(char * n) { name = n; }
+  Ident(char * n) {
+	  name = n;
+  }
+
 
   virtual void print(int n);
+  virtual bool isSymbol(){ return TRUE; } //Idents
+
+  virtual string getName(){
+ 	  return name;
+   }
 };
 
 
@@ -126,6 +155,7 @@ class Nil : public Node {
 
   virtual void print(int n)		{ print(n, FALSE); }
   virtual void print(int n, bool p);
+  virtual bool isNull(){ return TRUE; } // nil
 };
 
 
@@ -135,6 +165,7 @@ class Cons : public Node {
   Node * cdr;
   Special * form;
   
+
   // parseList() `parses' special forms, constructs an appropriate
   // object of a subclass of Special, and stores a pointer to that
   // object in variable form.  It would be possible to fully parse
@@ -146,11 +177,37 @@ class Cons : public Node {
   void parseList();
   // TODO: Add any helper functions for parseList as appropriate.
 
+  virtual Node * getCar(){
+	  return car;
+  }
+  virtual Node * getCdr(){
+	  return cdr;
+  }
+  /*
+   virtual Node setCar(Node *a){
+	   car = a;
+   }
+   virtual Node setCdr(Node *d){
+	   cdr = d;
+   }
+*/
+
+
  public:
-  Cons(Node * a, Node * d) { car = a;  cdr = d;  parseList();}
+  Cons(Node * a, Node * d) {
+	  car = a;
+	  cdr = d;
+	  parseList();
+  }
 
   virtual void print(int n);
   virtual void print(int n, bool p);
+
+  virtual bool isPair(){ return TRUE; } //cons
+
+
+
+
 };
 
 #endif

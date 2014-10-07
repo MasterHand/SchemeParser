@@ -43,6 +43,7 @@ class Quote : public Special {
 
  public:
   // TODO: Add an appropriate constructor.
+	Quote() {} //empty constructor
 
   virtual void print(Node * t, int n, bool p);
 };
@@ -54,6 +55,7 @@ class Lambda : public Special {
 
  public:
   // TODO: Add an appropriate constructor.
+	Lambda() {}
 
   virtual void print(Node * t, int n, bool p);
 };
@@ -65,6 +67,7 @@ class Begin : public Special {
 
  public:
   // TODO: Add an appropriate constructor.
+	Begin() {}
 
   virtual void print(Node * t, int n, bool p);
 };
@@ -76,6 +79,7 @@ class If : public Special {
 
  public:
   // TODO: Add an appropriate constructor.
+	If() {}
 
   virtual void print(Node * t, int n, bool p);
 };
@@ -87,6 +91,7 @@ class Let : public Special {
 
  public:
   // TODO: Add an appropriate constructor.
+	Let() {}
 
   virtual void print(Node * t, int n, bool p);
 };
@@ -98,6 +103,7 @@ class Cond : public Special {
 
  public:
   // TODO: Add an appropriate constructor.
+	Cond() {}
 
   virtual void print(Node * t, int n, bool p);
 };
@@ -109,6 +115,7 @@ class Define : public Special {
 
  public:
   // TODO: Add an appropriate constructor.
+	Define() {}
 
   virtual void print(Node * t, int n, bool p);
 };
@@ -120,6 +127,7 @@ class Set : public Special {
 
  public:
   // TODO: Add an appropriate constructor.
+	Set() {}
 
   virtual void print(Node * t, int n, bool p);
 };
@@ -131,6 +139,7 @@ class Regular : public Special {
 
  public:
   // TODO: Add an appropriate constructor.
+	Regular() {}
 
   virtual void print(Node * t, int n, bool p);
 };

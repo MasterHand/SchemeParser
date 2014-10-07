@@ -43,13 +43,19 @@
 class Parser {
  private:
   Scanner * scanner;
+  Token * token;
 
  public:
-  Parser(Scanner * s)	{ scanner = s; }
+  Parser(Scanner * s)	{
+	  scanner = s;
+  }
   Node * parseExp();
 
  protected:
+  Node * parseExp(Token * token);
   Node * parseRest();
+  Node * parseRest(Token * token);
+  //Node * DotFunc(Token * token);
 
   // TODO: Add any additional methods you might need.
 };

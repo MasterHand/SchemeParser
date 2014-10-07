@@ -64,4 +64,27 @@ Cons::print(int n, bool p) {
 void
 Cons::parseList() {
   // TODO: implement this function and any helper functions you might need.
+
+	if (car->isSymbol()){
+		string name = car->getName();
+
+		if (name == "quote")
+			form = new Quote();
+		else if (name == "lambda")
+			form = new Lambda();
+		else if (name == "begin")
+			form = new Begin();
+		else if (name == "if")
+			form = new If();
+		else if (name == "let")
+			form = new Cond();
+		else if (name == "define")
+			form = new Define();
+		else if (name == "set")
+			form = new  Set();
+		else
+			form = new Regular();
+	}
+
+
 }

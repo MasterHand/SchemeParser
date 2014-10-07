@@ -66,9 +66,13 @@ class StrToken : public Token {
   char * strVal;
 
  public:
-  StrToken(char * s) : Token(STRING)	{ strVal = strdup(s); }
+  StrToken(char * s) : Token(STRING)	{
+	  strVal = strdup(s);
+  }
 
-  virtual char * getStrVal()		{ return strVal; }
+  virtual char * getStrVal()		{
+	  return strVal;
+  }
 };
 
 
@@ -77,9 +81,13 @@ class IdentToken : public Token {
   char * name;
 
  public:
-  IdentToken(char * s) : Token(IDENT)	{ name = strdup(s); }
+  IdentToken(char * s) : Token(IDENT)	{
+	  name = strdup(s);
+  }
 
-  virtual char * getName()		{ return name; }
+  virtual char * getName()		{
+	  return name;
+  }
 };
 
 #endif

@@ -1,0 +1,10 @@
+initial test. code base compiles
+LPAREN
+IDENT, name = +
+INT, intVal = 2
+INT, intVal = 4
+RPAREN
+LPAREN
+RPAREN
+TRUET
+FALSET

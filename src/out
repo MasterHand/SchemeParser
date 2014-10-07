@@ -1,50 +1,34 @@
 initial test. code base compiles
-IDENT, name = ?
-IDENT, name = $???
-IDENT, name = ?
-LPAREN
-IDENT, name = DEFINE
-IDENT, name = x
-LPAREN
-IDENT, name = define
-LPAREN
-IDENT, name = fac
-IDENT, name = n
-LPAREN
-IDENT, name = if
-LPAREN
-IDENT, name = =
-IDENT, name = n
-INT, intVal = 0
-RPAREN
-INT, intVal = 1
-LPAREN
-IDENT, name = *
-IDENT, name = n
-LPAREN
-IDENT, name = fac
-LPAREN
-IDENT, name = -
-IDENT, name = n
-INT, intVal = 1
-RPAREN
-RPAREN
-RPAREN
-RPAREN
-RPAREN
-RPAREN
-LPAREN
-TRUET
-TRUET
-STRING, strVal = Scan this damn string
-RPAREN
-STRING, strVal = new string
-STRING, strVal = 225
-INT, intVal = 225
-INT, intVal = 1
-INT, intVal = 2346
-IDENT, name = two
-IDENT, name = two
-INT, intVal = 5
-INT, intVal = 1
-IDENT, name = se7en
+root1 = 0x1
+calling parseExp
+calling parseExp(Token * token) enumerated token type = 0 token = 0x7fee8ac03a80
+calling parseExp
+calling parseExp(Token * token) enumerated token type = 1 token = 0x7fee8ac03ae0
+calling parseRest
+calling parseRest(Token * token) 6 token =0x7fee8ac03b00
+calling parseExp(Token * token) enumerated token type = 6 token = 0x7fee8ac03b00
+calling parseRest
+calling parseRest(Token * token) 8 token =0x7fee8ac03f20
+calling parseExp(Token * token) enumerated token type = 8 token = 0x7fee8ac03f20
+calling parseRest
+calling parseRest(Token * token) 6 token =0x7fee8ac03f90
+calling parseExp(Token * token) enumerated token type = 6 token = 0x7fee8ac03f90
+calling parseRest
+calling parseRest(Token * token) 2 token =0x7fee8ac03fc0
+root 2 = 0x7fee8ac03a90
+root3 0x7fee8ac03a90
+calling parseExp
+calling parseExp(Token * token) enumerated token type = 1 token = 0x7fee8ac04010
+calling parseRest
+calling parseRest(Token * token) 8 token =0x7fee8ac04020
+calling parseExp(Token * token) enumerated token type = 8 token = 0x7fee8ac04020
+calling parseRest
+calling parseRest(Token * token) 8 token =0x7fee8ac04080
+calling parseExp(Token * token) enumerated token type = 8 token = 0x7fee8ac04080
+calling parseRest
+calling parseRest(Token * token) 6 token =0x7fee8ac040f0
+calling parseExp(Token * token) enumerated token type = 6 token = 0x7fee8ac040f0
+calling parseRest
+calling parseRest(Token * token) 2 token =0x7fee8ac04120
+root3 0x7fee8ac04050
+calling parseExp
