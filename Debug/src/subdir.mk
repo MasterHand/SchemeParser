@@ -13,9 +13,7 @@ CPP_SRCS += \
 O_SRCS += \
 ../src/Main.o \
 ../src/Parser.o \
-../src/Scanner.o \
-../src/Special.o \
-../src/Tree.o 
+../src/Scanner.o 
 
 OBJS += \
 ./src/Main.o \
