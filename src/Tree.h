@@ -74,7 +74,7 @@ class Node {
   virtual void setCar(Node * a) { }
   virtual void setCdr(Node * d) { }
 
-  virtual string getStrVal(){ return NULL;}
+  virtual string getStrVal(){return NULL; }
   virtual string getName(){ return NULL; }
 };
 

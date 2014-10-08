@@ -1,0 +1,36 @@
+initial test. code base compiles
+root1 = 0x7fff53c35b38
+calling parseExp()
+token type is..pExp 1
+calling parseExp(token*t)
+token type is 1
+token not null
+token type is 1
+Lparen
+calling parseRest(token*t)
+in rest() token type is 1
+new cons(parseExp(token), parseRest()) 
+calling parseExp()
+token type is..pExp 8
+calling parseExp(token*t)
+token type is 8
+token not null
+token type is 8
+calling parseRest()
+token type is..pREST 6
+calling parseRest(token*t)
+in rest() token type is 6
+new cons(parseExp(token), parseRest()) 
+calling parseExp()
+token type is..pExp 6
+calling parseExp(token*t)
+token type is 6
+token not null
+token type is 6
+calling parseRest()
+token type is..pREST 2
+calling parseRest(token*t)
+in rest() token type is 2
+root = parser->parseExp() is  0x7fcb1bc039e0
+PP
+calling parseExp()

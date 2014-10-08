@@ -43,7 +43,7 @@
 class Parser {
  private:
   Scanner * scanner;
-  Token  *token;
+
 
  public:
   Parser(Scanner * s)	{
