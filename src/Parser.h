@@ -35,7 +35,7 @@
 
 #ifndef PARSER_H
 #define PARSER_H
-
+#include <iostream>
 #include "Tokens.h"
 #include "Tree.h"
 #include "Scanner.h"
@@ -43,11 +43,12 @@
 class Parser {
  private:
   Scanner * scanner;
-
+  Token  *token;
 
  public:
   Parser(Scanner * s)	{
 	  scanner = s;
+
 
   }
   Node * parseExp();

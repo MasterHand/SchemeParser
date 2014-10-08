@@ -64,11 +64,12 @@ int main (int argc, char ** argv) {
 
   // Parse and pretty-print each input expression
   root = parser->parseExp();
-  cout << "root 2 = "<< root << endl;
+  cout << "root = parser->parseExp() is  "<< root << endl;
 
   while (root != NULL) {
+	  cout << "pretty print" << endl;
     root->print(0);
-    cout << "root3 "<< root << endl;
+   // cout << "root3 "<< root << endl;
     root = parser->parseExp();
   }
 

@@ -1,12 +1,26 @@
 initial test. code base compiles
-root1 = 0x7fff526a5b10
-calling parseExp
-calling parseExp(Token * token) enumerated token type = 1 token = 0x7fbc1ad00040
-calling parseRest
-calling parseRest(Token * token) 6 token =0x7fbc1ad00490
-calling parseExp(Token * token) enumerated token type = 6 token = 0x7fbc1ad00490
-calling parseRest
-calling parseRest(Token * token) 8 token =0x7fbc1ad00510
-calling parseExp(Token * token) enumerated token type = 8 token = 0x7fbc1ad00510
-calling parseRest
-root 2 = 0x7fbc1ad004a0
+root1 = 0x0
+calling parseExp 
+calling parseExp(token*t)
+root = parser->parseExp() is  0x7ff50ad00040
+pretty print
+1
+root3 0x7ff50ad00040
+calling parseExp 
+calling parseExp(token*t)
+pretty print
+2
+root3 0x7ff50ad00480
+calling parseExp 
+calling parseExp(token*t)
+calling parseExp 
+calling parseExp(token*t)
+pretty print
+root3 0x7ff50ad004c0
+calling parseExp 
+calling parseExp(token*t)
+pretty print
+34
+root3 0x7ff50ad005c0
+calling parseExp 
+calling parseExp(token*t)
