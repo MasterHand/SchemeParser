@@ -69,7 +69,7 @@ int main (int argc, char ** argv) {
   while (root != NULL) {
 	  cout << "PP" << endl;
     root->print(0);
-   // cout << "root3 "<< root << endl;
+   //cout << "root= "<< root << endl;
     root = parser->parseExp();
   }
 

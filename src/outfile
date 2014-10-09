@@ -1,0 +1,15 @@
+initial test. code base compiles
+root1 = 0x7fff5ec84af8
+calling parseExp()
+token not null ===exp 0x7fb032500040
+return expr exp 0x7fb032500050
+root = parser->parseExp() is  0x7fb032500050
+PP
+#t
+calling parseExp()
+token not null ===exp 0x7fb032500080
+return expr exp 0x7fb032500060
+PP
+2
+calling parseExp()
+return expr exp 0x0

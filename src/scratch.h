@@ -11,25 +11,21 @@
 
 Node * Parser::parseExp(){
 	cout << "calling parseExp()" << endl;
-	return parseExp(scanner->getNextToken());
+	return (scanner->getNextToken());
 }
 Node * Parser::parseRest(){
 	cout<< "calling parseRest()"<< endl;
-	return parseRest(scanner->getNextToken());
+	return (scanner->getNextToken());
 }
 
 
 Node * Parser::parseExp(Token * token){
-
-	token = scanner->getNextToken();
-
 	Node *expr = NULL;
 
 	if (token != NULL){
 		cout<<"token not null ===exp " << token << endl;
 
 		if (token->getType() == LPAREN){
-			cout <<"Lparen" << endl;
 			return parseRest(token);
 		}
 		else if (token->getType() ==TRUET){
@@ -49,21 +45,17 @@ Node * Parser::parseExp(Token * token){
 		}
 		else if (token->getType() == QUOTE){
 			expr = new Cons(new Ident("quote"), new Cons(parseExp(), new Nil()));
-		}else
-			return expr;
+		}
 
 
 
 	}
-	cout <<"return expr exp " << expr << endl;
+	cout <<"return expr exp" << endl;
 		return expr;
 
 
 }
 Node * Parser::parseRest(Token * token){
-
-	token = scanner->getNextToken();
-
 	Node * expr = NULL;
 
 	if (token != NULL){
@@ -79,7 +71,7 @@ Node * Parser::parseRest(Token * token){
 				expr = new Cons(parseExp(token), parseRest());
 
 	}
-	cout <<"return expr rest" << expr << endl;
+	cout <<"return expr rest" << endl;
 		return expr;
 
 }
