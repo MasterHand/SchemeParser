@@ -10,11 +10,6 @@ CPP_SRCS += \
 ../src/Special.cpp \
 ../src/Tree.cpp 
 
-O_SRCS += \
-../src/Main.o \
-../src/Parser.o \
-../src/Scanner.o 
-
 OBJS += \
 ./src/Main.o \
 ./src/Parser.o \
