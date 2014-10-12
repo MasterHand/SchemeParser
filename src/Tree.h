@@ -14,6 +14,7 @@
 #define TREE_H
 
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -52,7 +53,15 @@ class Node {
   // encode that in the sign bit of n.  If you need additional parameters,
   // make sure that you define the method print in all the appropriate
   // subclasses of Node as well.
-  virtual void print(int n, bool p) { print(n); }
+  virtual void print(int n, bool p) {
+	  print(n);
+  }
+  virtual void printSpace(int n){
+
+	  for (int i = 0; i < n; i++){
+		  cout << ' ';
+	  }
+  }
 
   // For parsing Cons nodes, for printing trees, and later for
   // evaluating them, we need some helper functions that test
@@ -91,6 +100,10 @@ class BoolLit : public Node {
   virtual void print(int n);
   virtual bool isBool()   { return TRUE; }  // BoolLit
 
+  virtual string getName(){
+	  return boolVal ? "#t": "#f";
+  };
+
 
 };
 
@@ -106,6 +119,11 @@ class IntLit : public Node {
 
   virtual void print(int n);
   virtual bool isNumber() { return TRUE; }  // IntLit
+  virtual string getName(){
+	  return std::to_string(intVal);
+  }
+
+
 
 };
 
@@ -183,14 +201,7 @@ class Cons : public Node {
   virtual Node * getCdr(){
 	  return cdr;
   }
-  /*
-   virtual Node setCar(Node *a){
-	   car = a;
-   }
-   virtual Node setCdr(Node *d){
-	   cdr = d;
-   }
-*/
+
 
 
  public:
@@ -202,6 +213,7 @@ class Cons : public Node {
 
   virtual void print(int n);
   virtual void print(int n, bool p);
+
 
   virtual bool isPair(){ return TRUE; } //cons
 

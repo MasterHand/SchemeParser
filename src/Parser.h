@@ -44,6 +44,9 @@ class Parser {
  private:
   Scanner * scanner;
   Token * token;
+  Node *Nilnode;
+  Node *Tnode;
+  Node *Fnode;
 
  public:
   Parser(Scanner * s)	{
@@ -58,6 +61,13 @@ class Parser {
   Node * parseRest();
   Node * parseRest(Token * token);
   //Node * DotFunc(Token * token);
+
+  Node * getNilnode();
+  Node * getFnode();
+  Node * getTnode();
+
+
+
 
   // TODO: Add any additional methods you might need.
 };

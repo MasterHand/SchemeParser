@@ -29,7 +29,6 @@ static char * TokenName[] = {
 
 int main (int argc, char ** argv) {
 
-	cout << "initial test. code base compiles" << endl;
   // create scanner that reads from standard input
   Scanner * scanner = new Scanner(&cin);
 
@@ -60,17 +59,15 @@ int main (int argc, char ** argv) {
   // Create parser
   Parser * parser = new Parser(scanner);
   Node * root;
-  cout << "root1 = "<< root << endl;
 
   // Parse and pretty-print each input expression
   root = parser->parseExp();
-  cout << "root = parser->parseExp() is  "<< root << endl;
 
   while (root != NULL) {
-	  cout << "PP" << endl;
+	 // cout << "PP" << endl;
     root->print(0);
-   //cout << "root= "<< root << endl;
     root = parser->parseExp();
+	cout << endl;
   }
 
   return 0;

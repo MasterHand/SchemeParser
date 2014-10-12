@@ -2,89 +2,76 @@
 
 #include "Tree.h"
 #include "Special.h"
+#include <typeinfo>
+#include <string>
 
-
-void
-BoolLit::print(int n) {
-  // There got to be a more efficient way to print n spaces.
-  for (int i = 0; i < n; i++)
-    cout << ' ';
-  cout << (boolVal ? "#t" : "#f") << endl;
+void BoolLit::print(int n) {
+	printSpace(n);
+	cout << (boolVal ? "#t" : "#f");
+	cout << " ";
 }
 
-
-void
-IntLit::print(int n) {
-  // There got to be a more efficient way to print n spaces.
-  for (int i = 0; i < n; i++)
-    cout << ' ';
-  cout << intVal << endl;
+void IntLit::print(int n) {
+	printSpace(n);
+	cout << intVal;
+	cout << " ";
 }
 
-
-void
-StrLit::print(int n) {
-  // There got to be a more efficient way to print n spaces.
-  for (int i = 0; i < n; i++)
-    cout << ' ';
-  cout << '"' << strVal << '"' << endl;
+void StrLit::print(int n) {
+	printSpace(n);
+	cout << '"' << strVal << '"';
+	cout << " ";
 }
 
+void Ident::print(int n) {
+	printSpace(n);
+	cout << name;
 
-void
-Ident::print(int n) {
-  // There got to be a more efficient way to print n spaces.
-  for (int i = 0; i < n; i++)
-    cout << ' ';
-  cout << name << endl;
+	cout << " ";
+
 }
 
+void Nil::print(int n, bool p) {
 
-void
-Nil::print(int n, bool p) {
-  // There got to be a more efficient way to print n spaces.
-  for (int i = 0; i < n; i++)
-    cout << ' ';
-  cout << (p ? ")" : "()") << endl;
+	cout << (p ? ")" : "()");
+	cout << " ";
 }
 
+void Cons::print(int n) {
+	cout << "(";
+	this->print(n, false);
 
-void
-Cons::print(int n) {
-  form->print(this, n, FALSE);
 }
 
+void Cons::print(int n, bool p) {
 
-void
-Cons::print(int n, bool p) {
-  form->print(this, n, p);
+
+	form->print(this, n, p);
+	cdr->print(n, true);
 }
 
+void Cons::parseList() {
+	// TODO: implement this function and any helper functions you might need.
+	//bool isSymbol = car->isSymbol();
 
-void
-Cons::parseList() {
-  // TODO: implement this function and any helper functions you might need.
+	string name = car->getName();
 
-	if (car->isSymbol()){
-		string name = car->getName();
-
-		if (name == "quote")
-			form = new Quote();
-		else if (name == "lambda")
-			form = new Lambda();
-		else if (name == "begin")
-			form = new Begin();
-		else if (name == "if")
-			form = new If();
-		else if (name == "let")
-			form = new Cond();
-		else if (name == "define")
-			form = new Define();
-		else if (name == "set")
-			form = new  Set();
-		else
-			form = new Regular();
+	if (name == "'") {
+		form = new Quote(car);
+	} else if (name == "lambda") {
+		form = new Lambda(car);
+	} else if (name == "begin") {
+		form = new Begin(car);
+	} else if (name == "if") {
+		form = new If(car);
+	} else if (name == "let") {
+		form = new Cond(car);
+	} else if (name == "define") {
+		form = new Define(car);
+	} else if (name == "set!") {
+		form = new Set(car);
+	} else {
+		form = new Regular(car);
 	}
-
 
 }
