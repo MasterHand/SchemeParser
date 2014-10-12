@@ -5,47 +5,51 @@
 void
 Quote::print(Node * t, int n, bool p) {
   // TODO: implement this function.
+	this->quoteVal->print(n);
 }
 
 void
 Lambda::print(Node * t, int n, bool p) {
   // TODO: implement this function.
+	this->lambdaVal->print(n);
 }
 
 void
 Begin::print(Node * t, int n, bool p) {
   // TODO: implement this function.
-	this->beginVal->print(n,p);
+	this->beginVal->print(n);
+	cout << endl;
+
 }
 
 void
 If::print(Node * t, int n, bool p) {
   // TODO: implement this function.
-	this->ifVal->print(n,p);
+	this->ifVal->print(n);
 }
 
 void
 Let::print(Node * t, int n, bool p) {
   // TODO: implement this function.
-	this->letVal->print(n,p);
+	this->letVal->print(n);
 }
 
 void
 Cond::print(Node * t, int n, bool p) {
   // TODO: implement this function.
-	this->condVal->print(n,p);
+	this->condVal->print(n);
 }
 
 void
 Define::print(Node * t, int n, bool p) {
   // TODO: implement this function.
-	this->defineVal->print(n,p);
+	this->defineVal->print(n);
 }
 
 void
 Set::print(Node * t, int n, bool p) {
   // TODO: implement this function.
-	this->setVal->print(n,p);
+	this->setVal->print(n);
 }
 
 void

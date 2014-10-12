@@ -1,4 +1,9 @@
 #
+#
+#Andrew Bergeron
+#Marshall Vileneuvia
+#
+#
 # Makefile for CSC 4101
 #
 # This Makefile is written for GNU Make
