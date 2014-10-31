@@ -14,9 +14,6 @@
 #define TREE_H
 
 #include <iostream>
-#include <string>
-
-using namespace std;
 
 #ifndef NULL
 #define NULL 0
@@ -24,16 +21,20 @@ using namespace std;
 #define FALSE 0
 #define TRUE  1
 
-// Since Special.h #includes Tree.h, we can only have a forward declaration
-// of class Special here.  We therefore cannot have any method calls on
-// objects of the Special hierarchy.  We can only declare pointers of type
-// Special*.
-
 class Special;
-
 
 class Node {
  public:
+  // The static methods print, getCar, getCdr, isNull, and isPair are
+  // needed so that Printer.cpp does not have to be recompiled if
+  // virtual methods are added to class Node.  Do not call them in
+  // your code.
+  static void print(Node * t, int n, bool p);
+  static Node * getCar(Node * t);
+  static Node * getCdr(Node * t);
+  static bool isNull(Node * t);
+  static bool isPair(Node * t);
+
   // The argument of print(int) is the number of characters to indent.
   // Every subclass of Node must implement print(int).
   virtual void print(int n) = 0;
@@ -47,27 +48,13 @@ class Node {
   // For classes Cons and Nil, print(n,TRUE) means that the open
   // parenthesis was printed already by the caller.
   // Only classes Cons and Nil override print(int,bool).
-  // For correctly indenting special forms, you might need to pass
-  // additional information to print.  What additional information
-  // you pass is up to you.  If you only need one more bit, you can
-  // encode that in the sign bit of n.  If you need additional parameters,
-  // make sure that you define the method print in all the appropriate
-  // subclasses of Node as well.
-  virtual void print(int n, bool p) {
-	  print(n);
-  }
-  virtual void printSpace(int n){
-
-	  for (int i = 0; i < n; i++){
-		  cout << ' ';
-	  }
-  }
+  virtual void print(int n, bool p) { print(n); }
 
   // For parsing Cons nodes, for printing trees, and later for
   // evaluating them, we need some helper functions that test
   // the type of a node and that extract some information.
 
-  // TODO: implement these in the appropriate subclasses to return TRUE.
+  // these are implemented in the appropriate subclasses to return TRUE.
   virtual bool isBool()   { return FALSE; }  // BoolLit
   virtual bool isNumber() { return FALSE; }  // IntLit
   virtual bool isString() { return FALSE; }  // StringLit
@@ -76,15 +63,14 @@ class Node {
   virtual bool isPair()   { return FALSE; }  // Cons
 
   // TODO: Report an error in these default methods and implement them
-  // in class Cons.  After setCar, a Cons cell needs to be `parsed' again
-  // using parseList.
+  // in class Cons.  After setCar and setCdr, a Cons cell needs to
+  // be parsed again.
   virtual Node * getCar() { return NULL; }
   virtual Node * getCdr() { return NULL; }
   virtual void setCar(Node * a) { }
   virtual void setCdr(Node * d) { }
 
-  virtual string getStrVal(){return NULL; }
-  virtual string getName(){ return NULL; }
+  virtual char * getName() { return NULL; }
 };
 
 
@@ -93,18 +79,11 @@ class BoolLit : public Node {
   bool boolVal;
 
  public:
-  BoolLit(bool b) {
-	  boolVal = b;
-  }
+  BoolLit(bool b) { boolVal = b;  }
+
+  virtual bool isBool()   { return TRUE; }
 
   virtual void print(int n);
-  virtual bool isBool()   { return TRUE; }  // BoolLit
-
-  virtual string getName(){
-	  return boolVal ? "#t": "#f";
-  };
-
-
 };
 
 
@@ -113,18 +92,11 @@ class IntLit : public Node {
   int intVal;
 
  public:
-  IntLit(int i) {
-	  intVal = i;
-  }
+  IntLit(int i) { intVal = i; }
+
+  virtual bool isNumber() { return TRUE; }
 
   virtual void print(int n);
-  virtual bool isNumber() { return TRUE; }  // IntLit
-  virtual string getName(){
-	  return std::to_string(intVal);
-  }
-
-
-
 };
 
 
@@ -133,18 +105,11 @@ class StrLit : public Node {
   char * strVal;
 
  public:
-  StrLit(char * s) {
-	  strVal = s;
-  }
+  StrLit(char * s) { strVal = s; }
 
-  virtual string getStrlVal(){
-	  return strVal;
-  }
-
+  virtual bool isString() { return TRUE; }
 
   virtual void print(int n);
-  virtual bool isString() { return TRUE; }  // StringLit
-
 };
 
 
@@ -153,17 +118,13 @@ class Ident : public Node {
   char * name;
 
  public:
-  Ident(char * n) {
-	  name = n;
-  }
+  Ident(char * n) { name = n; }
 
+  virtual bool isSymbol() { return TRUE; }
+
+  virtual char * getName() { return name; }
 
   virtual void print(int n);
-  virtual bool isSymbol(){ return TRUE; } //Idents
-
-  virtual string getName(){
- 	  return name;
-   }
 };
 
 
@@ -171,9 +132,10 @@ class Nil : public Node {
  public:
   Nil() { }
 
+  virtual bool isNull()   { return TRUE; }
+
   virtual void print(int n)		{ print(n, FALSE); }
   virtual void print(int n, bool p);
-  virtual bool isNull(){ return TRUE; } // nil
 };
 
 
@@ -183,43 +145,24 @@ class Cons : public Node {
   Node * cdr;
   Special * form;
   
-
-  // parseList() `parses' special forms, constructs an appropriate
+  // parseList() parses special forms, constructs an appropriate
   // object of a subclass of Special, and stores a pointer to that
-  // object in variable form.  It would be possible to fully parse
-  // special forms at this point.  Since this causes complications
-  // when using (incorrect) programs as data, it is easiest to let
-  // parseList only look at the car for selecting the appropriate
-  // object from the Special hierarchy and to leave the rest of
-  // parsing up to the interpreter.
+  // object in variable form.
   void parseList();
   // TODO: Add any helper functions for parseList as appropriate.
 
-  virtual Node * getCar(){
-	  return car;
-  }
-  virtual Node * getCdr(){
-	  return cdr;
-  }
-
-
-
  public:
-  Cons(Node * a, Node * d) {
-	  car = a;
-	  cdr = d;
-	  parseList();
-  }
+  Cons(Node * a, Node * d) { car = a;  cdr = d;  parseList();}
+
+  virtual bool isPair()   { return TRUE; }
+
+  virtual Node * getCar() { return car; }
+  virtual Node * getCdr() { return cdr; }
+  virtual void setCar(Node * a) { car = a;  parseList();}
+  virtual void setCdr(Node * d) { cdr = d;  parseList();}
 
   virtual void print(int n);
   virtual void print(int n, bool p);
-
-
-  virtual bool isPair(){ return TRUE; } //cons
-
-
-
-
 };
 
 #endif

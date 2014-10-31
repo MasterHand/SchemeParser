@@ -14,12 +14,12 @@
 //         |  string_constant
 //         |  identifier
 //    rest -> )
-//         |  exp+ [. exp] )
+//	   | exp rest
+//	   | exp . exp )
 //
 // and builds a parse tree.  Lists of the form (rest) are further
-// `parsed' into regular lists and special forms in the constructor
-// for the parse tree node class Cons.  See Cons::parseList() for
-// more information.
+// parsed into regular lists and special forms in the constructor
+// for the parse tree node class Cons.
 //
 // The parser is implemented as an LL(0) recursive descent parser.
 // I.e., parseExp() expects that the first token of an exp has not
@@ -35,6 +35,7 @@
 
 #ifndef PARSER_H
 #define PARSER_H
+
 #include "Tokens.h"
 #include "Tree.h"
 #include "Scanner.h"
@@ -42,33 +43,16 @@
 class Parser {
  private:
   Scanner * scanner;
-  Token * token;
-  Node *Nilnode;
-  Node *Tnode;
-  Node *Fnode;
+
+  Node * parseExp(Token*);
+  Node * parseRest(Token*);
 
  public:
-  Parser(Scanner * s)	{
-	  scanner = s;
-
-
-  }
+  Parser(Scanner * s)	{ scanner = s; }
   Node * parseExp();
 
  protected:
-  Node * parseExp(Token * token);
   Node * parseRest();
-  Node * parseRest(Token * token);
-  //Node * DotFunc(Token * token);
-
-  Node * getNilnode();
-  Node * getFnode();
-  Node * getTnode();
-
-
-
-
-  // TODO: Add any additional methods you might need.
 };
 
 #endif

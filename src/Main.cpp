@@ -28,7 +28,6 @@ static char * TokenName[] = {
 
 
 int main (int argc, char ** argv) {
-
   // create scanner that reads from standard input
   Scanner * scanner = new Scanner(&cin);
 
@@ -40,7 +39,6 @@ int main (int argc, char ** argv) {
   // if commandline option -d is provided, debug the scanner
   if (argc == 2 && argv[1][0] == '-' && argv[1][1] == 'd') {
     // debug scanner
-
     Token * tok = scanner->getNextToken();
     while (tok != NULL) {
       TokenType tt = tok->getType();
@@ -62,12 +60,9 @@ int main (int argc, char ** argv) {
 
   // Parse and pretty-print each input expression
   root = parser->parseExp();
-
   while (root != NULL) {
-	 // cout << "PP" << endl;
     root->print(0);
     root = parser->parseExp();
-	cout << endl;
   }
 
   return 0;

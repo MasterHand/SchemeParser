@@ -17,9 +17,6 @@
 #define SPECIAL_H
 
 #include <iostream>
-
-using namespace std;
-
 #include "Tree.h"
 
 #ifndef NULL
@@ -28,27 +25,21 @@ using namespace std;
 #define FALSE 0
 #define TRUE  1
 
-// There are several different approaches for how to implement the Special
-// hierarchy.  We'll discuss some of them in class.  The easiest solution
-// is to not add any fields and to use empty constructors.
-
 class Special {
  public:
-	 virtual void print(Node * t, int n, bool p){
-		 cout << t;
-	 }
+  virtual void print(Node * t, int n, bool p) = 0;
 };
+
+// The constructors of the following classes take a pointer to the
+// cons node as argument that create the special node object.  This
+// allows adding any necessary parsing code later.
 
 class Quote : public Special {
  private:
   // TODO: Add any fields needed.
-	Node * quoteVal;
 
  public:
-  // TODO: Add an appropriate constructor.
-	Quote(Node * n) {
-		quoteVal = n;
-	}
+  Quote (Node * t) { }
 
   virtual void print(Node * t, int n, bool p);
 };
@@ -57,13 +48,9 @@ class Quote : public Special {
 class Lambda : public Special {
  private:
   // TODO: Add any fields needed.
-	Node * lambdaVal;
 
  public:
-  // TODO: Add an appropriate constructor.
-	Lambda(Node * n) {
-		lambdaVal = n;
-	}
+  Lambda (Node * t) { }
 
   virtual void print(Node * t, int n, bool p);
 };
@@ -72,13 +59,9 @@ class Lambda : public Special {
 class Begin : public Special {
  private:
   // TODO: Add any fields needed.
-	Node * beginVal;
 
  public:
-  // TODO: Add an appropriate constructor.
-	Begin(Node *n) {
-		beginVal = n;
-	}
+  Begin (Node * t) { }
 
   virtual void print(Node * t, int n, bool p);
 };
@@ -87,13 +70,9 @@ class Begin : public Special {
 class If : public Special {
  private:
   // TODO: Add any fields needed.
-	Node *ifVal;
 
  public:
-  // TODO: Add an appropriate constructor.
-	If(Node *n) {
-		ifVal = n;
-	}
+  If (Node * t) { }
 
   virtual void print(Node * t, int n, bool p);
 };
@@ -102,13 +81,9 @@ class If : public Special {
 class Let : public Special {
  private:
   // TODO: Add any fields needed.
-	Node *letVal;
 
  public:
-  // TODO: Add an appropriate constructor.
-	Let(Node * n) {
-		letVal = n;
-	}
+  Let (Node * t) { }
 
   virtual void print(Node * t, int n, bool p);
 };
@@ -117,13 +92,9 @@ class Let : public Special {
 class Cond : public Special {
  private:
   // TODO: Add any fields needed.
-	Node * condVal;
 
  public:
-  // TODO: Add an appropriate constructor.
-	Cond(Node * n) {
-		condVal = n;
-	}
+  Cond (Node * t) { }
 
   virtual void print(Node * t, int n, bool p);
 };
@@ -132,13 +103,9 @@ class Cond : public Special {
 class Define : public Special {
  private:
   // TODO: Add any fields needed.
-	Node *defineVal;
 
  public:
-  // TODO: Add an appropriate constructor.
-	Define(Node *n) {
-		defineVal = n;
-	}
+  Define (Node * t) { }
 
   virtual void print(Node * t, int n, bool p);
 };
@@ -147,15 +114,9 @@ class Define : public Special {
 class Set : public Special {
  private:
   // TODO: Add any fields needed.
-	Node *setVal;
-
-
 
  public:
-  // TODO: Add an appropriate constructor.
-	Set(Node * n){
-		setVal = n;
-		}
+  Set (Node * t) { }
 
   virtual void print(Node * t, int n, bool p);
 };
@@ -164,13 +125,9 @@ class Set : public Special {
 class Regular : public Special {
  private:
   // TODO: Add any fields needed.
-	 Node * regVal;
 
  public:
-  // TODO: Add an appropriate constructor.
-	Regular(Node * n) {
-		regVal = n;
-	}
+  Regular (Node * t) { }
 
   virtual void print(Node * t, int n, bool p);
 };

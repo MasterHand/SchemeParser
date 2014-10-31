@@ -20,20 +20,12 @@ using namespace std;
 class Scanner {
  private:
   istream * in;
-  char *buf;
-  int size;
-
-  void clearBuf();
+  char buf[BUFSIZE];
 
  public:
   Scanner(istream * i)		{ in = i; }
 
-
   Token * getNextToken();
 };
-
-
-
-
 
 #endif

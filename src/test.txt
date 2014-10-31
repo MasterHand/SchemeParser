@@ -1,0 +1,5 @@
+(assq 'y '((x 17)
+           (y 42)
+	   (z (closure
+		(lambda (x) (+ x y))
+		nil))))	
