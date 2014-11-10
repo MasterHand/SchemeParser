@@ -4,6 +4,7 @@
 #include "Tree.h"
 #include "Special.h"
 #include "Printer.h"
+#include "Environment.h"
 
 // The static methods print, getCar, getCdr, isNull, and isPair are
 // needed so that Printer.cpp does not have to be recompiled if
@@ -16,12 +17,32 @@ Node * Node::getCdr(Node * t) { return t->getCdr(); }
 bool Node::isNull(Node * t) { return t->isNull(); }
 bool Node::isPair(Node * t) { return t->isPair(); }
 
-
 // The print() methods for the parse tree node hierarchy were moved to
 // file Printer.cpp.  You can add your own code to the parse tree node
 // hierarchy in this file and simply link in the compiled print()
 // methods in Printer.o by adding the file Printer.o to the variable
 // OBJ in the Makefile.
+
+
+
+Node* BoolLit::eval(Environment* env) {
+   return env->eval(this);
+}
+Node* StrLit::eval(Environment* env) {
+	return env->eval(this);
+}
+Node* IntLit::eval(Environment* env) {
+	return env->eval(this);
+}
+Node* Ident::eval(Environment* env) {
+	return env->eval(this);
+}
+
+
+
+
+
+
 
 void
 BoolLit::print(int n) {

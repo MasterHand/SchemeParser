@@ -58,10 +58,16 @@ int main (int argc, char ** argv) {
   Parser * parser = new Parser(scanner);
   Node * root;
 
+
+  env = new Environment();
+  Ident * id;
+
+
   // Parse and pretty-print each input expression
   root = parser->parseExp();
   while (root != NULL) {
-    root->print(0);
+    //root->print(0);
+	  root->eval(env)->print(0);
     root = parser->parseExp();
   }
 

@@ -14,6 +14,7 @@
 #define TREE_H
 
 #include <iostream>
+#include "Environment.h"
 
 #ifndef NULL
 #define NULL 0
@@ -22,7 +23,7 @@
 #define TRUE  1
 
 class Special;
-
+class Environment;
 class Node {
  public:
   // The static methods print, getCar, getCdr, isNull, and isPair are
@@ -71,6 +72,12 @@ class Node {
   virtual void setCdr(Node * d) { }
 
   virtual char * getName() { return NULL; }
+
+  virtual Node * eval(Environment *env);
+
+  virtual Node *eval(Node *t, Environment *env);
+  virtual Node *evalBody(Node *t, Environment *env);
+
 };
 
 
@@ -84,6 +91,8 @@ class BoolLit : public Node {
   virtual bool isBool()   { return TRUE; }
 
   virtual void print(int n);
+  virtual Node * eval(Environment *env);
+
 };
 
 
@@ -97,6 +106,8 @@ class IntLit : public Node {
   virtual bool isNumber() { return TRUE; }
 
   virtual void print(int n);
+  virtual Node * eval(Environment *env);
+
 };
 
 
@@ -110,6 +121,8 @@ class StrLit : public Node {
   virtual bool isString() { return TRUE; }
 
   virtual void print(int n);
+  virtual Node * eval(Environment *env);
+
 };
 
 
@@ -125,6 +138,8 @@ class Ident : public Node {
   virtual char * getName() { return name; }
 
   virtual void print(int n);
+  virtual Node * eval(Environment *env);
+
 };
 
 
@@ -163,6 +178,10 @@ class Cons : public Node {
 
   virtual void print(int n);
   virtual void print(int n, bool p);
+
+  virtual Node * eval(Environment *env){
+	  return form->eval(this, env);
+  }
 };
 
 #endif

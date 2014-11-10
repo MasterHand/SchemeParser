@@ -26,8 +26,8 @@ HDR  =	Tokens.h Scanner.h Parser.h Tree.h Special.h \
 	Closure.h Environment.h
 SRC  =	Main.cpp Scanner.cpp Parser.cpp Tree.cpp Special.cpp \
 	Closure.cpp Environment.cpp
-OBJ  =	 Closure.o Environment.o
-OBJ2  =	${OBJ} Scanner.o Parser.o Printer.o Main.o Tree.o Special.o
+OBJ  =	Closure.o Environment.o 
+OBJ2  =	${OBJ} Scanner.o Parser.o Printer.o  Main.o Tree.o Special.o 
 EXE  =	scheme4101
 PRT  =	lp2
 GRD  =	README Makefile ${HDR} ${SRC}

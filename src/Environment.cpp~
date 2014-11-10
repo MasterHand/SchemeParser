@@ -2,8 +2,6 @@
 
 #include "Environment.h"
 
-using namespace std;
-
 void
 Environment::print(int n) {
   // there got to be a more efficient way to print n spaces
@@ -47,24 +45,12 @@ Environment::lookup (Node * id) {
     return env->lookup(id);
   else
     // get the value out of the list we got from find()
-    return val->getCar();
+    return val->getCar();;
 }
 
 void
 Environment::define (Node * id, Node * val) {
   // TODO: implement this function
-	Node *value = find(id, scope);
-
-	if(value == NULL){
-		scope = new Cons(new Cons(id, new Cons(value, new Nil())), scope);
-	}
-	else{
-		value->setCar(value);
-	}
-
-
-
-
 }
 
 void
@@ -73,21 +59,5 @@ Environment::assign (Node * id, Node * val) {
 
   // You can use find() to get a list containing the value and
   // then update the value using setCar()
-	Node * value = find(id, scope);
-
-	if (value == NULL && env == NULL){
-		cerr <<"undefined variable bro.";
-	}
-	else if(value == NULL){
-		assign(id, env);
-	}
-	else{
-		setCar(new Cons(id, val));
-	}
-
-
-}
-Node * eval(Node *t, Environment * env){
-	return new Nil();
 }
 

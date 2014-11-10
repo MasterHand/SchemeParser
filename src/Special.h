@@ -28,6 +28,11 @@
 class Special {
  public:
   virtual void print(Node * t, int n, bool p) = 0;
+ // virtual Node *eval(Environment * env);
+
+  virtual Node *eval(Node * t, Environment * env);
+  virtual Node *evalBody(Node *t, Environment *env)
+
 };
 
 // The constructors of the following classes take a pointer to the
@@ -42,6 +47,7 @@ class Quote : public Special {
   Quote (Node * t) { }
 
   virtual void print(Node * t, int n, bool p);
+  virtual Node *eval(Node *t, Environment *env);
 };
 
 
@@ -53,6 +59,8 @@ class Lambda : public Special {
   Lambda (Node * t) { }
 
   virtual void print(Node * t, int n, bool p);
+  virtual Node *eval(Node *t, Environment *env);
+
 };
 
 
@@ -64,6 +72,8 @@ class Begin : public Special {
   Begin (Node * t) { }
 
   virtual void print(Node * t, int n, bool p);
+  virtual Node *eval(Node *t, Environment *env);
+
 };
 
 
@@ -75,6 +85,8 @@ class If : public Special {
   If (Node * t) { }
 
   virtual void print(Node * t, int n, bool p);
+  virtual Node *eval(Node *t, Environment *env);
+
 };
 
 
@@ -86,6 +98,10 @@ class Let : public Special {
   Let (Node * t) { }
 
   virtual void print(Node * t, int n, bool p);
+  virtual Node *eval(Node *t, Environment *env);
+  virtual Node *evalBody(Node *t, Environment *env);
+
+
 };
 
 
@@ -97,6 +113,8 @@ class Cond : public Special {
   Cond (Node * t) { }
 
   virtual void print(Node * t, int n, bool p);
+  virtual Node *eval(Node *t, Environment *env);
+
 };
 
 
@@ -108,6 +126,8 @@ class Define : public Special {
   Define (Node * t) { }
 
   virtual void print(Node * t, int n, bool p);
+  virtual Node *eval(Node *t, Environment *env);
+
 };
 
 
@@ -119,6 +139,8 @@ class Set : public Special {
   Set (Node * t) { }
 
   virtual void print(Node * t, int n, bool p);
+  virtual Node *eval(Node *t, Environment *env);
+
 };
 
 
@@ -130,6 +152,8 @@ class Regular : public Special {
   Regular (Node * t) { }
 
   virtual void print(Node * t, int n, bool p);
+  virtual Node *eval(Node *t, Environment *env);
+
 };
 
 #endif
