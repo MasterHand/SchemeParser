@@ -28,16 +28,19 @@
 class Special {
  public:
   virtual void print(Node * t, int n, bool p) = 0;
- // virtual Node *eval(Environment * env);
 
+  virtual Node *eval(Environment * env);
   virtual Node *eval(Node * t, Environment * env);
-  virtual Node *evalBody(Node *t, Environment *env)
+  virtual Node *evalBody(Node *t, Environment *env);
 
 };
 
 // The constructors of the following classes take a pointer to the
 // cons node as argument that create the special node object.  This
 // allows adding any necessary parsing code later.
+
+
+
 
 class Quote : public Special {
  private:

@@ -26,16 +26,16 @@ bool Node::isPair(Node * t) { return t->isPair(); }
 
 
 Node* BoolLit::eval(Environment* env) {
-   return env->eval(this);
+   return env->eval(env);
 }
 Node* StrLit::eval(Environment* env) {
-	return env->eval(this);
+	return env->eval(env);
 }
 Node* IntLit::eval(Environment* env) {
-	return env->eval(this);
+	return env->eval(env);
 }
 Node* Ident::eval(Environment* env) {
-	return env->eval(this);
+	return env->eval(env);
 }
 
 

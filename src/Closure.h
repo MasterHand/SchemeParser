@@ -21,10 +21,21 @@
 // of the function symbol.
 
 class BuiltIn : public Node {
-  Node * symbol;
+private:
+	Node * symbol;
+	static Node * interaction_environment;
+
+
 
  public:
-  BuiltIn(Node * s)		{ symbol = s; }
+  BuiltIn(Node * s)		{
+	  symbol = s;
+  }
+
+  BuiltIn(Environment * env){
+	  interaction_environment = env;
+
+  }
 
   Node * getSymbol()		{ return symbol; }
 
@@ -38,6 +49,9 @@ class BuiltIn : public Node {
   // to report an error.  It should be overwritten only in classes
   // BuiltIn and Closure.
   virtual Node * apply (Node * args);
+
+ //protected:
+ // static  Environment * interaction_environment = new Environment();
 };
   
 
@@ -55,7 +69,10 @@ class Closure : public Node {
   Environment * env;		// the environment in which the function
 				// was defined
  public:
-  Closure(Node * f, Environment * e)	{ fun = f;  env = e; }
+  Closure(Node * f, Environment * e)	{
+	  fun = f;
+	  env = e;
+  }
 
   Node * getFun()		{ return fun; }
   Environment * getEnv()	{ return env; }

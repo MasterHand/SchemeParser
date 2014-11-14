@@ -59,15 +59,15 @@ int main (int argc, char ** argv) {
   Node * root;
 
 
-  env = new Environment();
-  Ident * id;
+ // env = new Environment();
+ // Ident * id;
 
 
   // Parse and pretty-print each input expression
   root = parser->parseExp();
   while (root != NULL) {
     //root->print(0);
-	  root->eval(env)->print(0);
+	 // root->eval(env)->print(0);
     root = parser->parseExp();
   }
 

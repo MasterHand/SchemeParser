@@ -3,7 +3,18 @@
 #include "Special.h"
 #include "Printer.h"
 #include "Tree.h"
+
+#include "Environment.h"
+#include "Closure.h"
 using namespace std;
+
+class Environment;
+class Closure;
+
+Node * Cons::eval(Environment *env){
+	  return form->eval(this, env);
+
+}
 
 // The print() methods for the Special node hierarchy were moved
 // to file Special-print.cpp.  You can add your own code to the
@@ -116,7 +127,7 @@ Node * Define::eval(Node *t, Environment *env){
 				env->define(id->getCar(), func);
 			}
 
-			return new StrLit("; no values returned");
+			return new StrLit("no values returned");
 		}
 
 Node * Set::eval(Node *t, Environment *env){
