@@ -49,6 +49,7 @@ private:
   // to report an error.  It should be overwritten only in classes
   // BuiltIn and Closure.
   virtual Node * apply (Node * args);
+  virtual Node * eval (Node *t, Environment * env);
 
  //protected:
  // static  Environment * interaction_environment = new Environment();

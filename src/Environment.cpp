@@ -1,6 +1,7 @@
 // Environment.cpp -- a data structure for Scheme environments
 
 #include "Environment.h"
+#include <cstring>
 
 using namespace std;
 
@@ -87,7 +88,16 @@ Environment::assign (Node * id, Node * val) {
 
 
 }
-Node * eval(Node *t, Environment * env){
+Node*
+Environment::eval(Environment * env){
+	return new Nil();
+}
+Node*
+Environment::eval(Node *t, Environment * env){
+	return new Nil();
+}
+Node*
+Environment::evalBody(Node *t, Environment * env){
 	return new Nil();
 }
 

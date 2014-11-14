@@ -38,6 +38,15 @@ Node* Ident::eval(Environment* env) {
 	return env->eval(env);
 }
 
+Node* Nil::eval(Environment* env) {
+	return NULL;
+}
+
+Node* Cons::eval(Environment* env){
+	return form->eval(this, env);
+}
+
+
 
 
 

@@ -1,6 +1,7 @@
 // Closure.cpp -- the data structure for function closures
 
 #include <iostream>
+#include <cstdlib>
 #include "Closure.h"
 #include "Parser.h"
 
