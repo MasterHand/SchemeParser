@@ -224,7 +224,8 @@ BuiltIn::apply(Node * args) {
   			Node* n = parser->parseExp();
   			return n;
   		} else if (symName =="interaction-environment") {
-  			interaction_environment->print(0);
+  			//interaction_environment->print(0);
+  			cerr << "interaction-environment";
   		} else {
   			// use "write" as the default
   			arg1->print(0);

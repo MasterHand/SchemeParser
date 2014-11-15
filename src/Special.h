@@ -30,7 +30,7 @@ class Special {
   virtual void print(Node * t, int n, bool p) = 0;
 
   //virtual Node *eval(Environment * env);
-  virtual Node *eval(Node * t, Environment * env);
+  virtual Node *eval(Node * t, Environment * env){return NULL;}
   //virtual Node *evalBody(Node *t, Environment *env);
 
 };

@@ -74,7 +74,7 @@ class Node {
   //return the string value
   virtual char * getName() { return NULL; }
   //return the value of the node
-  virtual int  getVal() { return NULL; }
+  virtual int getVal() { return 0; }
   virtual bool  getBool(){return false;}
   virtual char *getStrVal(){ return NULL; }
   virtual bool isProcedure(){return false;}
@@ -131,7 +131,7 @@ class IntLit : public Node {
   //virtual Node *evalBody(Node *t, Environment *env);
 
 
-  virtual int  getVal(){
+  int getVal(){
 	  return intVal;
   }
 
