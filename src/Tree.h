@@ -98,11 +98,9 @@ class BoolLit : public Node {
   virtual bool isBool()   { return TRUE; }
 
   virtual void print(int n);
-  //virtual Node * eval(Environment *env);
   virtual Node *eval(Node *t, Environment *env);
 
 
- //virtual Node *evalBody(Node *t, Environment *env);
 
   virtual bool getBool(){
 	  return boolVal;
@@ -124,11 +122,9 @@ class IntLit : public Node {
   virtual bool isNumber() { return TRUE; }
 
   virtual void print(int n);
-  //virtual Node * eval(Environment *env);
 
   virtual Node *eval(Node *t, Environment *env);
 
-  //virtual Node *evalBody(Node *t, Environment *env);
 
 
   int getVal(){
@@ -148,11 +144,9 @@ class StrLit : public Node {
   virtual bool isString() { return TRUE; }
 
   virtual void print(int n);
- // virtual Node * eval(Environment *env);
 
   virtual Node *eval(Node *t, Environment *env);
 
-  //virtual Node *evalBody(Node *t, Environment *env);
 
   virtual char * getStrVal(){
 	  return strVal;
@@ -173,11 +167,9 @@ class Ident : public Node {
   virtual char * getName() { return name; }
 
   virtual void print(int n);
- // virtual Node * eval(Environment *env);
 
   virtual Node *eval(Node *t, Environment *env);
 
-  //virtual Node *evalBody(Node *t, Environment *env);
 
 
 };
@@ -191,7 +183,6 @@ class Nil : public Node {
 
   virtual void print(int n)		{ print(n, FALSE); }
   virtual void print(int n, bool p);
-  //virtual Node * eval(Environment *env);
   virtual Node *eval(Node *t, Environment *env);
 
 
