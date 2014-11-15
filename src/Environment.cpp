@@ -92,12 +92,14 @@ Node*
 Environment::eval(Environment * env){
 	return new Nil();
 }
+
 Node*
 Environment::eval(Node *t, Environment * env){
 	return new Nil();
 }
+/*
 Node*
 Environment::evalBody(Node *t, Environment * env){
 	return new Nil();
 }
-
+*/

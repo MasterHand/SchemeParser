@@ -19,7 +19,7 @@
 // Another alternative is to program BuiltIn::apply() in a functional
 // style by writing a large if-then-else chain that tests the name of
 // of the function symbol.
-
+class Environment;
 class BuiltIn : public Node {
 private:
 	Node * symbol;
@@ -49,7 +49,9 @@ private:
   // to report an error.  It should be overwritten only in classes
   // BuiltIn and Closure.
   virtual Node * apply (Node * args);
-  virtual Node * eval (Node *t, Environment * env);
+  virtual Node * eval (Environment * env){return NULL;}
+
+  //virtual Node * eval (Node *t, Environment * env);
 
  //protected:
  // static  Environment * interaction_environment = new Environment();
@@ -83,6 +85,10 @@ class Closure : public Node {
   virtual void print(int n);
 
   virtual Node * apply (Node * args);
+  //virtual Node * eval (Environment * env);
+
+  virtual Node * eval (Node *t, Environment * env);
+
 };
 
 #endif

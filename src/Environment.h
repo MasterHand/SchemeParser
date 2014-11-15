@@ -35,7 +35,6 @@
 //      if the name exists in the innermost scope, update the value
 //      if it doesn't exist, perform the assignment in the enclosing scope
 //      if we don't find the name, it is an error
-
 class Environment : public Node {
 
   // An Environment is implemented like a Cons node, in which
@@ -58,7 +57,7 @@ class Environment : public Node {
   virtual Node *eval(Environment *env);
 
   virtual Node *eval(Node *t, Environment *env);
-  virtual Node *evalBody(Node *t, Environment *env);
+ // virtual Node *evalBody(Node *t, Environment *env);
 
 };
 

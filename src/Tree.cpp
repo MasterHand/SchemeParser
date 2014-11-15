@@ -25,24 +25,28 @@ bool Node::isPair(Node * t) { return t->isPair(); }
 
 
 
-Node* BoolLit::eval(Environment* env) {
-   return env->eval(env);
+Node* BoolLit::eval(Node *t, Environment* env) {
+   return this;
+	//return env->eval(env);
 }
-Node* StrLit::eval(Environment* env) {
-	return env->eval(env);
+Node* StrLit::eval(Node*t, Environment* env) {
+	return this;
+	//return env->eval(env);
 }
-Node* IntLit::eval(Environment* env) {
-	return env->eval(env);
+Node* IntLit::eval(Node*t, Environment* env) {
+	return this;
+	//return env->eval(env);
 }
-Node* Ident::eval(Environment* env) {
-	return env->eval(env);
+Node* Ident::eval(Node*t, Environment* env) {
+	return this;
+	//return env->eval(env);
 }
 
-Node* Nil::eval(Environment* env) {
+Node* Nil::eval(Node*t, Environment* env) {
 	return NULL;
 }
 
-Node* Cons::eval(Environment* env){
+Node* Cons::eval(Node*t, Environment* env){
 	return form->eval(this, env);
 }
 

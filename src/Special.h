@@ -29,9 +29,9 @@ class Special {
  public:
   virtual void print(Node * t, int n, bool p) = 0;
 
-  virtual Node *eval(Environment * env);
+  //virtual Node *eval(Environment * env);
   virtual Node *eval(Node * t, Environment * env);
-  virtual Node *evalBody(Node *t, Environment *env);
+  //virtual Node *evalBody(Node *t, Environment *env);
 
 };
 

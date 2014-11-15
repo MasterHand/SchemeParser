@@ -9,7 +9,7 @@
 using namespace std;
 
 class Environment;
-class Closure;
+//class Closure;
 
 Node * Cons::eval(Environment *env){
 	  return form->eval(this, env);
@@ -141,6 +141,12 @@ Node * Set::eval(Node *t, Environment *env){
 	return new StrLit("");
 
 }
+
+Node* Regular::eval(Node*t, Environment* env){
+	return NULL;
+}
+
+
 
 void
 Quote::print(Node * t, int n, bool p) {

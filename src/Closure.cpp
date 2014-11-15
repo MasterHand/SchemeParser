@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include "Closure.h"
 #include "Parser.h"
+#include "Environment.h"
 
 using namespace std;
 
@@ -266,6 +267,10 @@ Closure::apply(Node * args) {
 		args = args->getCdr();
 	}
 	return function->eval(e);
+}
+Node *
+Closure::eval(Node *t, Environment* env){
+	return new Nil();
 }
 
 
