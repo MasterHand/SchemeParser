@@ -61,6 +61,8 @@ int main(int argc, char ** argv) {
 	Environment *builtin_env = new Environment();
 	Ident * id;
 
+	//straight from lecture class notes
+
 	id = new Ident("b+");
 	builtin_env->define(id, new BuiltIn(id));
 
@@ -77,9 +79,6 @@ int main(int argc, char ** argv) {
 	builtin_env->define(id, new BuiltIn(id));
 
 	id = new Ident("b<");
-	builtin_env->define(id, new BuiltIn(id));
-
-	id = new Ident("b>");
 	builtin_env->define(id, new BuiltIn(id));
 
 	id = new Ident("car");
@@ -147,7 +146,7 @@ int main(int argc, char ** argv) {
 	// Parse and pretty-print each input expression
 	root = parser->parseExp();
 	while (root != NULL) {
-		root->print(0);
+		//root->print(0);
 		 if (env != NULL){
 		  root->eval(env)->print(0);
 		  }

@@ -57,10 +57,10 @@ Environment::define (Node * id, Node * val) {
 	Node *value = find(id, scope);
 
 	if(value == NULL){
-		scope = new Cons(new Cons(id, new Cons(value, new Nil())), scope);
+		scope = new Cons(new Cons(id, new Cons(val, new Nil())), scope);
 	}
 	else{
-		value->setCar(value);
+		value->setCar(val);
 	}
 
 

@@ -9,7 +9,6 @@
 using namespace std;
 
 
-static  Environment * interaction_environment = new Environment();
 
 
 void
@@ -27,6 +26,8 @@ BuiltIn::print(int n) {
 
 Node *
 BuiltIn::apply(Node * args) {
+	static  Environment * interaction_environment = new Environment();
+
 
 	/*Check nodes for Null values and if null, creat new nils()*/
   if(args == NULL){
@@ -138,6 +139,8 @@ BuiltIn::apply(Node * args) {
    	  }
      }
 
+  /*other symbols that will be represented as Ident *id in Main */
+
 
 
   else if (symName =="car") {
@@ -224,7 +227,7 @@ BuiltIn::apply(Node * args) {
   			Node* n = parser->parseExp();
   			return n;
   		} else if (symName =="interaction-environment") {
-  			//interaction_environment->print(0);
+  			interaction_environment->print(0);
   			cerr << "interaction-environment";
   		} else {
   			// use "write" as the default
